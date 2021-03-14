@@ -11,6 +11,8 @@ services:
         ipc: host
         network_mode: "host"
         stdin_open: true
+        devices:
+            - /dev/video0:/dev/video0
         tty: true
         volumes:
             - $HOME:/home/jetson:rw
@@ -41,6 +43,9 @@ services:
         environment:
             TERM: xterm-256color
             DISPLAY: $DISPLAY
+            NVIDIA_DRIVER_CAPABILITIE NVIDIA_VISIBLE_DEVICES: all
+            NVIDIA_DRIVER_CAPABILITIES: compute,video,utility
+
             # XAUTHORITY: $XAUTHORITY
             # QT_X11_NO_MITSHM: 1
             # DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/1000/bus"
